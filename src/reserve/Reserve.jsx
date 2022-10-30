@@ -5,7 +5,7 @@ import './reserve.css'
 
 const Reserve = ({setOpen, hotelId}) => {
 
-    const {data, loading, error}= useFetch(`http://localhost:5000/api/hotels/hotelRooms/${hotelId}`)
+    const {data, loading, error}= useFetch(`https://hotel-booking-backend-express.herokuapp.com/api/hotels/hotelRooms/${hotelId}`)
   console.log(data);
     return (
     <div>

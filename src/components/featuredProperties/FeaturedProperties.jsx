@@ -3,7 +3,7 @@ import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
 
-  const {data, loading, error} = useFetch("http://localhost:5000/api/hotels?featured=false&limit=4");
+  const {data, loading, error} = useFetch("https://hotel-booking-backend-express.herokuapp.com/api/hotels?featured=false&limit=4");
 
   return (
     <div className="fp">

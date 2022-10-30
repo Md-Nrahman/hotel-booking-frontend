@@ -17,7 +17,7 @@ const List = () => {
   const [min, setMin] = useState();
   const [max, setMax] = useState();
 
-  const {data, loading, error, reFetch} = useFetch(`http://localhost:5000/api/hotels?city=${destination}&limit=10&min=${min || 0}&max=${max || 100000}`);
+  const {data, loading, error, reFetch} = useFetch(`https://hotel-booking-backend-express.herokuapp.com/api/hotels?city=${destination}&limit=10&min=${min || 0}&max=${max || 100000}`);
 
 
   const handleClick=()=>{

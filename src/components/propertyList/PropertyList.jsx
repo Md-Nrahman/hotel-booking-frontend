@@ -3,7 +3,7 @@ import "./propertyList.css";
 
 const PropertyList = () => {
 
-  const {data, loading, error} = useFetch("http://localhost:5000/api/hotels/countByType");
+  const {data, loading, error} = useFetch("https://hotel-booking-backend-express.herokuapp.com/api/hotels/countByType");
 
   return (
     <div className="pList">

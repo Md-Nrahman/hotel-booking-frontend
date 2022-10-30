@@ -3,7 +3,7 @@ import "./featured.css";
 
 const Featured = () => {
 
-  const {data, loading, error} = useFetch("http://localhost:5000/api/hotels/countByCity?cities=Dhaka,Chittagong");
+  const {data, loading, error} = useFetch("https://hotel-booking-backend-express.herokuapp.com/api/hotels/countByCity?cities=Dhaka,Chittagong");
 
   console.log(data,error);
 

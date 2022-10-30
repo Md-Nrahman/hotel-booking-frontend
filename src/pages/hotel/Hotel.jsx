@@ -29,7 +29,7 @@ const Hotel = () => {
 
   const navigate= useNavigate()
 
-  const { data, loading, error } = useFetch(`http://localhost:5000/api/hotels/find/${pathId}`);
+  const { data, loading, error } = useFetch(`https://hotel-booking-backend-express.herokuapp.com/api/hotels/find/${pathId}`);
 
 
   const {dates, options} = useContext(SearchContext)
