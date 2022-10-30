@@ -31,15 +31,19 @@ const useFetch = (url) => {
         
     }
 
+    const reFetch = () => {
+        fetchData();
+    }
+
     useEffect(() => {
        
 
         fetchData();
 
-        }, [url]);
+        }, []);
 
 
-    return { data, loading, error };
+    return { reFetch, data, loading, error };
 }
 
 export default useFetch;
