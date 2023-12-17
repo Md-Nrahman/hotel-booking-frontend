@@ -17,12 +17,15 @@ const List = () => {
   const [min, setMin] = useState();
   const [max, setMax] = useState();
 
-  const {data, loading, error, reFetch} = useFetch(`https://hotel-booking-backend-express.herokuapp.com/api/hotels?city=${destination}&limit=10&min=${min || 0}&max=${max || 100000}`);
+  const { data, loading, error, reFetch } = useFetch(
+    `https://hotel-booking-backend-2mm6.onrender.com/api/hotels?city=${destination}&limit=10&min=${
+      min || 0
+    }&max=${max || 100000}`
+  );
 
-
-  const handleClick=()=>{
-    reFetch()
-  }
+  const handleClick = () => {
+    reFetch();
+  };
   return (
     <div>
       <Navbar />
@@ -33,7 +36,11 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input onChange={(e)=>setDestination(e.target.value)} placeholder={destination} type="text" />
+              <input
+                onChange={(e) => setDestination(e.target.value)}
+                placeholder={destination}
+                type="text"
+              />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -56,13 +63,21 @@ const List = () => {
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" onChange={(e)=>setMin(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMin(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" onChange={(e)=>setMax(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMax(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
@@ -96,10 +111,11 @@ const List = () => {
             <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
-            {loading ? <div>Loading...</div>:
-            data?.map((item) => (
-              <SearchItem key={item?._id} item={item}/>
-            ))}
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              data?.map((item) => <SearchItem key={item?._id} item={item} />)
+            )}
           </div>
         </div>
       </div>

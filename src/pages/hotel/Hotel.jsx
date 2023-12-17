@@ -25,28 +25,29 @@ const Hotel = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
 
-  const {user}= useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
-  const { data, loading, error } = useFetch(`https://hotel-booking-backend-express.herokuapp.com/api/hotels/find/${pathId}`);
+  const { data, loading, error } = useFetch(
+    `https://hotel-booking-backend-2mm6.onrender.com/api/hotels/find/${pathId}`
+  );
 
-
-  const {dates, options} = useContext(SearchContext)
+  const { dates, options } = useContext(SearchContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function daysBetween(date1, date2) {
-    if(date1 == date2){
-      return 1
-    } else if(date1 > date2){
+    if (date1 == date2) {
+      return 1;
+    } else if (date1 > date2) {
       const difference = Math.abs(date1 - date2);
-    return Math.floor(difference / MILLISECONDS_PER_DAY);
+      return Math.floor(difference / MILLISECONDS_PER_DAY);
     } else {
-      return 1
+      return 1;
     }
   }
 
-  const days= daysBetween(dates[0].endDate, dates[0].startDate)
+  const days = daysBetween(dates[0].endDate, dates[0].startDate);
 
   const photos = [
     {
@@ -83,16 +84,16 @@ const Hotel = () => {
       newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
     }
 
-    setSlideNumber(newSlideNumber)
+    setSlideNumber(newSlideNumber);
   };
 
-  const handleClick=(e)=>{
-    if(user){
-      setOpenModal(true)
-    } else{
-      navigate('/login')
+  const handleClick = (e) => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
     }
-  }
+  };
 
   return (
     <div>
@@ -132,7 +133,8 @@ const Hotel = () => {
             Excellent location – {data?.distance} from center
           </span>
           <span className="hotelPriceHighlight">
-            Book a stay over {data?.cheapestPrice} at this property and get a free airport taxi
+            Book a stay over {data?.cheapestPrice} at this property and get a
+            free airport taxi
           </span>
           <div className="hotelImages">
             {photos.map((photo, i) => (
@@ -149,9 +151,7 @@ const Hotel = () => {
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
               <h1 className="hotelTitle">{data?.title}</h1>
-              <p className="hotelDesc">
-               {data?.desc}
-              </p>
+              <p className="hotelDesc">{data?.desc}</p>
             </div>
             <div className="hotelDetailsPrice">
               <h1>Perfect for a {days}-night stay!</h1>
@@ -160,7 +160,8 @@ const Hotel = () => {
                 excellent location score of 9.8!
               </span>
               <h2>
-                <b>${days*data?.cheapestPrice*options.room}</b> ({days} nights)
+                <b>${days * data?.cheapestPrice * options.room}</b> ({days}{" "}
+                nights)
               </h2>
               <button onClick={handleClick}>Reserve or Book Now!</button>
             </div>
